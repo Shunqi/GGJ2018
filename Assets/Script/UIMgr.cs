@@ -54,7 +54,7 @@ public class UIMgr : MonoBehaviour {
                 break;
             case 2:
                 Vector3 position = Camera.main.transform.position;
-                position.y = Mathf.Lerp(targetCameraPositionY, initialCameraPositionY, (Time.time - startTime) / animationDuration[2]);
+                position.y = Mathf.Lerp(initialCameraPositionY, targetCameraPositionY, (Time.time - startTime) / animationDuration[2]);
                 Camera.main.transform.position = position;
                 if (position.y >= targetCameraPositionY)
                 {
@@ -122,7 +122,7 @@ public class UIMgr : MonoBehaviour {
     }
 
     // this function is intended to translate the camera to a y posit
-    public void ShiftCamera(int length)
+    public void ShiftCamera(float length)
     {
         initialCameraPositionY = Camera.main.transform.position.y;
         targetCameraPositionY = initialCameraPositionY + length;
