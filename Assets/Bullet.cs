@@ -14,8 +14,12 @@ public class Bullet : MonoBehaviour {
     private static Vector4 bounds;
     public Transform motherPlanet;
 
+    private GameMgr gameMgr;
+
     // Use this for initialization
     void Start () {
+        gameMgr = GameObject.FindObjectOfType<GameMgr>();
+
         var cam = Camera.main;
         var bottomleft = cam.ViewportToWorldPoint(Vector3.zero);
         var topright = cam.ViewportToWorldPoint(new Vector3(1f, 1f, 0f));
@@ -24,7 +28,7 @@ public class Bullet : MonoBehaviour {
         bounds.y = bottomleft.y;
         bounds.z = topright.x;
         bounds.w = topright.y;
-        motherPlanet = FindObjectsOfType<Planet>()[0].transform;
+        motherPlanet = gameMgr.GetComponent<GameMgr>().getMotherTransform();
         center = motherPlanet.transform.position;
         Radius = 8f * motherPlanet.localScale.x;
         fired = false;
@@ -34,8 +38,12 @@ public class Bullet : MonoBehaviour {
     {
         angle += RotateSpeed * Time.deltaTime;
         //Debug.Log(angle / 2 / Mathf.PI - 0.25);
+        Debug.Log("Radius: " + Radius);
+        Debug.Log("Angle : " + angle);
         var offset = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)) * Radius;
         //dist += (center - offset - (Vector2)transform.position).magnitude;
+        Debug.Log("center: " + center);
+        Debug.Log("offset: " + offset);
         transform.position = center - offset;
 
 

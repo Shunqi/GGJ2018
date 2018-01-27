@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class Planet : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-        Initialize();
+    private GameMgr gameMgr;
+
+    // Use this for initialization
+    void Start () {
+        gameMgr = GameObject.FindObjectOfType<GameMgr>();
     }
 
-    public void Initialize()
+    public void Initialize(Vector3 pos)
     {
         transform.localScale = new Vector3(0.2f, 0.2f,0);
+        transform.position = pos;
     }
 
     private void CheckKeys()
@@ -34,6 +37,7 @@ public class Planet : MonoBehaviour {
         collider.GetComponent<Bullet>().fired = false;
         collider.GetComponent<Bullet>().motherPlanet = transform;
         collider.GetComponent<Bullet>().NewPlanet();
+        gameMgr.GetComponent<GameMgr>().AddScore(1);
     }
 
     // Update is called once per frame
