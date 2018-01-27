@@ -23,18 +23,20 @@ public class Bullet : MonoBehaviour {
         bounds.y = bottomleft.y;
         bounds.z = topright.x;
         bounds.w = topright.y;
-
-        motherPlanet = FindObjectsOfType<Planet>()[0].transform;
+    }
+    public void Initialize(Transform mother)
+    {
+        motherPlanet = mother;
         center = motherPlanet.transform.position;
         fired = false;
         if (((Vector3)center - transform.position).y < 0)
         {
             angle = Mathf.Asin(((Vector3)center - transform.position).x / Radius);
         }
-        else angle = Mathf.PI-Mathf.Asin(((Vector3)center - transform.position).x / Radius);
+        else angle = Mathf.PI - Mathf.Asin(((Vector3)center - transform.position).x / Radius);
         clockWiseRotation = true;
     }
-	private void Circular(bool clockwise)
+    private void Circular(bool clockwise)
     {
         if (clockwise)
             angle += RotateSpeed * Time.deltaTime;
