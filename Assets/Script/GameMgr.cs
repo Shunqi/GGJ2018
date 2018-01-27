@@ -9,7 +9,9 @@ public class GameMgr : MonoBehaviour
     private UIMgr uiMgr;
     private bool isPause;
     private int score;
-    public GameObject[] planets; 
+    public GameObject[] planets;
+    GameObject planetPrefab;
+
     //public Queue planets;
 
 
@@ -109,9 +111,9 @@ public class GameMgr : MonoBehaviour
     public GameObject SpawnPlanet(float x, float y)
     {
         GameObject target = GenerateRandomPlanet();
-        GameObject newPlanet = Instantiate(target);
-        newPlanet.GetComponent<Planet>().Initialize(new Vector3(x,y,0));
-        return newPlanet;
+        Instantiate(target);
+        target.GetComponent<Planet>().Initialize(new Vector3(x,y,0));
+        return target;
     }
 
     // Randomly select a prefad

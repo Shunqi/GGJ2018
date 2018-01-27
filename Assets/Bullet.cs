@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
     private float RotateSpeed = 2f;
     private float ForwardSpeed = 3f;
-    private float Radius = 1.5f;
+    private float Radius;
     public float angle;
     //private float dist;
     private Vector2 center;
@@ -19,6 +19,7 @@ public class Bullet : MonoBehaviour {
         var cam = Camera.main;
         var bottomleft = cam.ViewportToWorldPoint(Vector3.zero);
         var topright = cam.ViewportToWorldPoint(new Vector3(1f, 1f, 0f));
+
         bounds.x = bottomleft.x;
         bounds.y = bottomleft.y;
         bounds.z = topright.x;
@@ -26,8 +27,9 @@ public class Bullet : MonoBehaviour {
     }
     public void Initialize(Transform mother)
     {
-        motherPlanet = mother;
+        motherPlanet = FindObjectsOfType<Planet>()[0].transform;
         center = motherPlanet.transform.position;
+        Radius = 8f * motherPlanet.localScale.x;
         fired = false;
         if (((Vector3)center - transform.position).y < 0)
         {
@@ -38,9 +40,7 @@ public class Bullet : MonoBehaviour {
     }
     private void Circular(bool clockwise)
     {
-        if (clockwise)
-            angle += RotateSpeed * Time.deltaTime;
-        else angle -= RotateSpeed * Time.deltaTime;
+        angle += RotateSpeed * Time.deltaTime;
         //Debug.Log(angle / 2 / Mathf.PI - 0.25);
         var offset = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)) * Radius;
         //dist += (center - offset - (Vector2)transform.position).magnitude;
@@ -73,7 +73,7 @@ public class Bullet : MonoBehaviour {
 	void Update () {
         if (!fired)
         {
-            Circular(clockWiseRotation);
+            Circular();
         }
         if (fired)
         {
