@@ -38,7 +38,7 @@ public class Bullet : MonoBehaviour {
         else angle = Mathf.PI - Mathf.Asin(((Vector3)center - transform.position).x / Radius);
         clockWiseRotation = true;
     }
-    private void Circular(bool clockwise)
+    private void Circular()
     {
         angle += RotateSpeed * Time.deltaTime;
         //Debug.Log(angle / 2 / Mathf.PI - 0.25);

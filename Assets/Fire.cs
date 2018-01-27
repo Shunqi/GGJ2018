@@ -11,12 +11,10 @@ public class Fire : MonoBehaviour {
         transform.position = rocket.position + 0.8f*transform.right;
         transform.rotation = rocket.rotation;
 	}
-	
 	// Update is called once per frame
 	void Update () {
         if (FindObjectOfType<Bullet>().fired)
         {
-            
             transform.position = rocket.position + 0.8f * transform.right;
             transform.rotation = rocket.rotation;
             GetComponent<SpriteRenderer>().enabled = true;

@@ -11,6 +11,7 @@ public class GameMgr : MonoBehaviour
     private int score;
     public GameObject[] planets;
     GameObject planetPrefab;
+    GameObject rocketPrefab;
 
     //public Queue planets;
 
@@ -18,6 +19,7 @@ public class GameMgr : MonoBehaviour
     // Initialization
     void Awake()
     {
+        
         if (null == instance)
         {
             instance = this;
