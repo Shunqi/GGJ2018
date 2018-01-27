@@ -104,7 +104,8 @@ public class GameMgr : MonoBehaviour
     // Randomly select a prefad
     public static GameObject GenerateRandomPlanet()
     {
-        return null;
+        GameObject instance = Resources.Load("earth") as GameObject;
+        return instance;
     }
 
     public static float GenerateRandomX()
