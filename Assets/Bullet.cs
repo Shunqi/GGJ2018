@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
     private float RotateSpeed = 2f;
-    private float ForwardSpeed = 5f;
+    private float ForwardSpeed = 6f;
     private float Radius;
     public float angle;
     //private float dist;
@@ -62,12 +62,12 @@ public class Bullet : MonoBehaviour {
 
     public void NewPlanet()
     {
-        if (((Vector3)center - transform.position).y < 0)
-        {
-            angle = Mathf.Asin(((Vector3)center - transform.position).x / Radius);
-        }
-        else angle = Mathf.PI - Mathf.Asin(((Vector3)center - transform.position).x / Radius);
         center = motherPlanet.transform.position;
+        //if (((Vector3)center - transform.position).y < 0)
+        //{
+            angle = Mathf.Asin(((Vector3)center - transform.position).x / Radius);
+        //}
+        //else angle = Mathf.PI - Mathf.Asin(((Vector3)center - transform.position).x / Radius);
     }
 	// Update is called once per frame
 	void Update () {
@@ -85,6 +85,7 @@ public class Bullet : MonoBehaviour {
         {
             //GameOver
             Debug.Log("GG");
+            gameMgr.GameOver();
         }
     }
 }
