@@ -6,43 +6,48 @@ using UnityEngine.UI;
 public class UIMgr : MonoBehaviour {
 
     // title UIs
-    public GameObject titleUIs;
-    public Image titleImage;
-    public Button titleStartButton;
+    public  GameObject titleUIs;
+    public  Image titleImage;
+    public  Button titleStartButton;
 
     // gameplay UIs
-    public GameObject gameplayUIs;
-    public Button gameplayPauseButton;
-    public Button gameplayCreditButton;
-    public TextMesh gameplayScoreText;
+    public  GameObject gameplayUIs;
+    public  Button gameplayPauseButton;
+    public  Button gameplayCreditButton;
+    public  TextMesh gameplayScoreText;
 
     // pauseMenu UIs
-    public GameObject pauseUIs;
-    public Button pauseResumeButton;
-    public Button pauseRestartButton;
+    public  GameObject pauseUIs;
+    public  Button pauseResumeButton;
+    public  Button pauseRestartButton;
 
     // endGame UIs
-    public GameObject endGameUIs;
-    public Image endGameRetryButton;
+    public  GameObject endGameUIs;
+    public  Image endGameRetryButton;
 
     // credit UIs
-    public GameObject creditUIs;
+    public  GameObject creditUIs;
 
     // animation variables
-    float startTime;
-    int animationType = 0;
-    float[] animationDuration = { 0, 1, 2 };
+     float startTime;
+     int animationType = 0;
+     float[] animationDuration = { 0, 1, 2 };
 
-    float initialCameraPositionY;
-    float targetCameraPositionY;
+     float initialCameraPositionY;
+     float targetCameraPositionY;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    private GameMgr gameMgr;
+
+    // Use this for initialization
+    public  void Start () {
+        GameObject GameManagerObject = GameObject.Find("GameManager");
+
+        gameMgr = GameManagerObject.GetComponent<GameMgr>();
+
+    }
 	
 	// Update is called once per frame
-	void Update () {
+	public  void Update () {
         switch (animationType) {
             case 1:
                 Camera.main.orthographicSize = Mathf.Lerp(2.6f, 5, (Time.time - startTime) / animationDuration[1]);
@@ -66,7 +71,7 @@ public class UIMgr : MonoBehaviour {
 	}
     
     // this function is intended to disable the UI temporary
-    public void HideUI()
+    public  void HideUI()
     {
         titleUIs.SetActive(false);
         gameplayUIs.SetActive(false);
@@ -77,7 +82,7 @@ public class UIMgr : MonoBehaviour {
     }
 
     // this function is intended to display the title layouts
-    public void InitMenu()
+    public  void InitMenu()
     {
         titleUIs.SetActive(true);
         gameplayUIs.SetActive(false);
@@ -88,7 +93,7 @@ public class UIMgr : MonoBehaviour {
     }
     
     // this function is intended to display the gameplay layouts
-    public void InitGame()
+    public  void InitGame()
     {
         titleUIs.SetActive(false);
         gameplayUIs.SetActive(true);
@@ -99,19 +104,19 @@ public class UIMgr : MonoBehaviour {
     }
 
     // this function is intended to display the pauseMenu layouts
-    public void Pause()
+    public  void Pause()
     {
         pauseUIs.SetActive(true);
-        // GameMgr.ChangeState();
+        gameMgr.Pause();
     }
-    public void Resume()
+    public  void Resume()
     {
         pauseUIs.SetActive(false);
-        // GameMgr.ChangeState();
+        gameMgr.Start();
     }
 
     // this function is intended to display the endGame layouts
-    public void EndOfGame()
+    public  void EndOfGame()
     {
         titleUIs.SetActive(false);
         gameplayUIs.SetActive(false);
@@ -122,7 +127,7 @@ public class UIMgr : MonoBehaviour {
     }
 
     // this function is intended to translate the camera to a y posit
-    public void ShiftCamera(int length)
+    public  void ShiftCamera(float length)
     {
         initialCameraPositionY = Camera.main.transform.position.y;
         targetCameraPositionY = initialCameraPositionY + length;
@@ -131,7 +136,7 @@ public class UIMgr : MonoBehaviour {
     }
 
     // this function is intended to update scores
-    public void UpdateScores(int scores)
+    public  void UpdateScores(int scores)
     {
         gameplayScoreText.text = "" + scores;
     }
@@ -139,7 +144,7 @@ public class UIMgr : MonoBehaviour {
     // 
 
     // this function is intended to handle start game effects and related start game calls
-    public void StartGame()
+    public  void StartGame()
     {
         animationType = 1;
         startTime = Time.time;
@@ -147,7 +152,7 @@ public class UIMgr : MonoBehaviour {
     }
 
     // this function is intended to show credits
-    public void ShowCredits()
+    public  void ShowCredits()
     {
         titleUIs.SetActive(false);
         gameplayUIs.SetActive(false);
