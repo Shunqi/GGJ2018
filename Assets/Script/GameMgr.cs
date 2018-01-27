@@ -6,11 +6,10 @@ public class GameMgr : MonoBehaviour
 {
     public static GameMgr instance = null;
 
-    private UIController uiController;
-    private GameController gameController;
-    private bool isPause;
-    
-    private int score;
+    private static UIManager uiController;
+    private static bool isPause;
+    private static int score;
+    public static GameObject[] planets; 
 
 
     // Initialization
@@ -28,53 +27,52 @@ public class GameMgr : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         score = 0;
         isPause = true;
+        
+        GameObject UIManagerObject = GameObject.FindWithTag ("UIController");
 
-        GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
-        GameObject uiControllerObject = GameObject.FindWithTag ("UIController");
-
-        uiController = uiControllerObject.GetComponent<UIManager>();
-        gameController = gameControllerObject.GetComponent<GamePlayManager>();
+        uiController = UIManagerObject.GetComponent<UIManager>();
 
         InitGame();
     }
 
-    void InitGame()
+    public static void InitGame()
     {
+        // Initiate UI panel
         uiController.InitMenu();
+        planets = new GameObject[2];
+        planets[0] = SpawnPlanet(20, 0);
+
+        float x = GenerateRandomX();
+        float y = GenerateRandomY();
+        planets[1] = SpawnPlanet(x, y);
     }
 
-    
     public static void Pause()
     {
-        uiController.Pause();
+        // Change state to Pause
         isPause = true;
     }
 
-    // For both start and restart
     public static void Start()
     {
-        uiController.InitGame();
+        // Change satate to Start
         isPause = false;
     }
-
-    public static void Resume()
-    {
-        uiController.Resume();
-        isPause = false;
-    }
+    
 
     public static int GetScore()
     {
         return score;
     }
 
+    // For GamePlay to disable space click
     public static bool IsPause()
     {
         return isPause;
     }
 
     /* 
-    Update score by addtion
+    Update score by addtion and push changes to UI side
     newScore: the score to add
     always be 1 for now, will add more bonus in the future
      */
@@ -82,6 +80,77 @@ public class GameMgr : MonoBehaviour
     {
         score += newScore;
         uiController.UpdateScore(score);
+
+        float x = GenerateRandomX();
+        float y = GenerateRandomY();
+
+        GameObject newPlanet = SpawnPlanet(x, y);
+        uiController.ShiftCamera(planets[1].transform.position.y - planets[0].transform.position.x);
+
+        DestoryPlanet(planets[0]);
+        planets[0] = planets[1];
+        planets[1] = newPlanet;
+
     }
 
+    // Create new planet
+    public static GameObject SpawnPlanet(float x, float y)
+    {
+        GameObject target = GenerateRandomPlanet();
+        GameObject newPlanet = Instantiate(target, new Vector3(x, y, 0), Quaternion.Euler(0, 0, 0));
+        return newPlanet;
+    }
+
+    // Randomly select a prefad
+    public static GameObject GenerateRandomPlanet()
+    {
+        return null;
+    }
+
+    public static float GenerateRandomX()
+    {
+        var cam = Camera.main;
+        var bottomleft = cam.ViewportToWorldPoint(Vector3.zero);
+        var topright = cam.ViewportToWorldPoint(new Vector3(1f, 1f, 0f));
+        float minX = bottomleft.x;
+        float minY = bottomleft.y;
+
+        float maxX = topright.x;
+        float maxY = topright.y;
+
+        float x = Random.Range(minX, maxX);
+        return x;
+    }
+
+    public static float GenerateRandomY()
+    {
+        var cam = Camera.main;
+        var bottomleft = cam.ViewportToWorldPoint(Vector3.zero);
+        var topright = cam.ViewportToWorldPoint(new Vector3(1f, 1f, 0f));
+        float minX = bottomleft.x;
+        float minY = bottomleft.y;
+
+        float maxX = topright.x;
+        float maxY = topright.y;
+
+        float y = Random.Range(minY, maxX);
+        return y;
+    }
+
+
+
+    public static void GameOver()
+    {
+        uiController.EndOfGame();
+    }
+
+    public static void DestoryPlanet(GameObject planetToRemove)
+    {
+        Destroy(planetToRemove);
+    }
+
+    public static float CalculateDistance(float y)
+    {
+        return 0;
+    }
 }
