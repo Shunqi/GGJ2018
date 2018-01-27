@@ -34,7 +34,7 @@ public class UIMgr : MonoBehaviour
 	float startTime;
 	float startTimeForTransfer;
 	int animationType = 0;
-	float[] animationDuration = { 0, 1, 1 };
+	float[] animationDuration = { 0, 1, 0.5f };
 
 	float initialCameraPositionY;
 	float targetCameraPositionY;
