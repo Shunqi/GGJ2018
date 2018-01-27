@@ -2,57 +2,86 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Witch
+public class GameMgr : MonoBehaviour
 {
-    public class GameMgr : MonoBehaviour
+    public static GameMgr instance = null;
+
+    private UIController uiController;
+    private GameController gameController;
+    private bool isPause;
+    
+    private int score;
+
+
+    // Initialization
+    void Awake()
     {
-        public static GameMgr instance = null;
-
-
-        //  --- Unity default ---
-        // Use this for initialization
-        void Awake()
+        if (null == instance)
         {
-            if (null == instance)
-            {
-                instance = this;
-            }
-            else if (this != instance)
-            {
-                Destroy(gameObject);
-            }
-
-            DontDestroyOnLoad(gameObject);
-
-            InitGame();
-            //get instance of managers
+            instance = this;
+        }
+        else if (this != instance)
+        {
+            Destroy(gameObject);
         }
 
+        DontDestroyOnLoad(gameObject);
+        score = 0;
+        isPause = true;
 
-        void Start()
-        {
+        GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
+        GameObject uiControllerObject = GameObject.FindWithTag ("UIController");
 
-        }
+        uiController = uiControllerObject.GetComponent<UIManager>();
+        gameController = gameControllerObject.GetComponent<GamePlayManager>();
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-        //  --- End of Unity default ---
-
-
-        //initiate game attributes, load data if necessary
-        void InitGame()
-        {
-            // to be implemented
-        }
-
-
-
-
+        InitGame();
     }
 
+    void InitGame()
+    {
+        uiController.InitMenu();
+    }
 
+    
+    public static void Pause()
+    {
+        uiController.Pause();
+        isPause = true;
+    }
+
+    // For both start and restart
+    public static void Start()
+    {
+        uiController.InitGame();
+        isPause = false;
+    }
+
+    public static void Resume()
+    {
+        uiController.Resume();
+        isPause = false;
+    }
+
+    public static int GetScore()
+    {
+        return score;
+    }
+
+    public static bool IsPause()
+    {
+        return isPause;
+    }
+
+    /* 
+    Update score by addtion
+    newScore: the score to add
+    always be 1 for now, will add more bonus in the future
+     */
+    public static void AddScore(int newScore)
+    {
+        score += newScore;
+        uiController.UpdateScore(score);
+    }
 
 }
