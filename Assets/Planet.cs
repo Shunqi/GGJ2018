@@ -25,6 +25,7 @@ public class Planet : MonoBehaviour {
     private void Fire()
     {
         FindObjectOfType<Bullet>().GetComponent<Bullet>().fired = true;
+		GameObject.Find("BGM Controller").GetComponent<BGMController>().RocketSoundHigh();
     }
     private void OnTriggerEnter2D(Collider2D collider)
     {
@@ -34,6 +35,7 @@ public class Planet : MonoBehaviour {
         collider.GetComponent<Bullet>().fired = false;
         collider.GetComponent<Bullet>().motherPlanet = transform;
         collider.GetComponent<Bullet>().NewPlanet();
+		GameObject.Find("BGM Controller").GetComponent<BGMController>().RocketSoundLow();
     }
 
     // Update is called once per frame

@@ -60,6 +60,7 @@ public class Bullet : MonoBehaviour {
         }
         else angle = Mathf.PI - Mathf.Asin(((Vector3)center - transform.position).x / Radius);
         center = motherPlanet.transform.position;
+		GameObject.Find("BGM Controller").GetComponent<BGMController>().SuccessBeepPlay();
     }
 	// Update is called once per frame
 	void Update () {
