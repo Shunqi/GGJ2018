@@ -51,6 +51,7 @@ public class Planet : MonoBehaviour
 
     // Update is called once per frame
     void Update () {
+        Debug.Log("updating in planet");
         CheckKeys();
 	}
 

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UIMgr : MonoBehaviour
 {
+    GameMgr gameMgr;
 
 	// title UIs
 	public GameObject titleUIs;
@@ -33,7 +34,7 @@ public class UIMgr : MonoBehaviour
 	float startTime;
 	float startTimeForTransfer;
 	int animationType = 0;
-	float[] animationDuration = { 0, 1, 2 };
+	float[] animationDuration = { 0, 1, 1 };
 
 	float initialCameraPositionY;
 	float targetCameraPositionY;
@@ -41,7 +42,7 @@ public class UIMgr : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-
+        gameMgr = FindObjectOfType<GameMgr>().instance;
 	}
 
 	// Update is called once per frame
@@ -116,9 +117,13 @@ public class UIMgr : MonoBehaviour
 		pauseUIs.SetActive(false);
 		// GameMgr.ChangeState();
 	}
+    public void Restart()
+    {
+        InitGame();
+    }
 
-	// this function is intended to display the endGame layouts
-	public void EndOfGame()
+    // this function is intended to display the endGame layouts
+    public void EndOfGame()
 	{
 		titleUIs.SetActive(false);
 		gameplayUIs.SetActive(false);
@@ -152,6 +157,7 @@ public class UIMgr : MonoBehaviour
 		animationType = 1;
 		startTime = Time.time;
 		HideUI();
+        gameMgr.StartGame();
 	}
 
 	// this function is intended to show credits
