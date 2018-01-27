@@ -25,9 +25,9 @@ public class Planet : MonoBehaviour {
     }
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log("Collide");
         //Add score
         //CameraShift
+        FindObjectOfType<Envelope>().GetComponent<Envelope>().Show();
         collider.GetComponent<Bullet>().fired = false;
         collider.GetComponent<Bullet>().motherPlanet = transform;
         collider.GetComponent<Bullet>().NewPlanet();
