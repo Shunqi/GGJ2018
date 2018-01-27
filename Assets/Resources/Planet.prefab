@@ -68,6 +68,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bcbd323117cc284faf1932aaa365508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 833e83a5a686f0244b5a09eb6e1cc454, type: 3}
+  - {fileID: 21300000, guid: 66a72565d88ec544ea59805019e4f7ea, type: 3}
+  - {fileID: 21300000, guid: 30699b439b3c60746ae33525aa5b8243, type: 3}
+  - {fileID: 21300000, guid: 0a465543ae94cfe488fda9414c34240b, type: 3}
+  - {fileID: 21300000, guid: 58c80342cd3c844698b894e484917c8e, type: 3}
+  - {fileID: 21300000, guid: 8e9fb6ffdbdc049f4943d0dd1125f323, type: 3}
+  - {fileID: 21300000, guid: 0690c20d95c1c2d4686fee7d850cc7ce, type: 3}
+  - {fileID: 21300000, guid: 8ffa15b2880c373449fa40685bf34374, type: 3}
+  - {fileID: 21300000, guid: 3c37a051163064a409832b0ead107b09, type: 3}
+  - {fileID: 21300000, guid: 2f6897f97cab3244e90aa696cdbf181c, type: 3}
+  - {fileID: 21300000, guid: 9aa32a7c935e6ca4dbac9f069118bddd, type: 3}
 --- !u!212 &212536496764109760
 SpriteRenderer:
   m_ObjectHideFlags: 1
