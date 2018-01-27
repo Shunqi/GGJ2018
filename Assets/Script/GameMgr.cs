@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameMgr : MonoBehaviour
 {
-    public static GameMgr instance = null;
+    /*public static GameMgr instance = null;
 
     private static UIManager uiController;
     private static bool isPause;
@@ -71,11 +71,11 @@ public class GameMgr : MonoBehaviour
         return isPause;
     }
 
-    /* 
+    
     Update score by addtion and push changes to UI side
     newScore: the score to add
     always be 1 for now, will add more bonus in the future
-     */
+     
     public static void AddScore(int newScore)
     {
         score += newScore;
@@ -153,5 +153,5 @@ public class GameMgr : MonoBehaviour
     public static float CalculateDistance(float y)
     {
         return 0;
-    }
+    }*/
 }

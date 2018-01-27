@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
     private float RotateSpeed = 2f;
-    private float ForwardSpeed = 3f;
+    private float ForwardSpeed = 5f;
     private float Radius;
     public float angle;
     //private float dist;

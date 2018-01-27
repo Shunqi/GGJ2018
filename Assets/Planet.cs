@@ -16,7 +16,10 @@ public class Planet : MonoBehaviour {
 
     private void CheckKeys()
     {
-        if(Input.GetKeyDown(KeyCode.Space)) { Fire(); }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Fire();
+        }
     }
 
     private void Fire()
