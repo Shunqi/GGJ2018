@@ -50,7 +50,7 @@ public class GameMgr : MonoBehaviour
 
         // First two planets, hard-coded
         SpawnPlanet(0, -1.9f);
-        SpawnPlanet(0, 4.29f);
+        SpawnPlanet(0, 4.29f).GetComponent<Planet>().RandomizeSprite();
         currentY = 4.29f;
 
     }
@@ -62,17 +62,16 @@ public class GameMgr : MonoBehaviour
     }
 
 
-    public void Pause()
+    public void StopGame()
     {
         // Change state to Pause
         isPause = true;
     }
 
-    public void Start()
+    public void StartGame()
     {
         // Change satate to Start
         isPause = false;
-        
     }
     
 
@@ -106,12 +105,12 @@ public class GameMgr : MonoBehaviour
         float x = GenerateRandomX();
         float y = GenerateRandomY();
 
-        SpawnPlanet(x, y);
+        SpawnPlanet(x, y).GetComponent<Planet>().RandomizeSprite();
         Destroy(planetToRemove);
     }
 
     // Create new planet
-    public void SpawnPlanet(float x, float y)
+    public GameObject SpawnPlanet(float x, float y)
     {
         GameObject newPlanet = Instantiate(planetPrefab);
         newPlanet.GetComponent<Planet>().Initialize(new Vector3(x, y, 0));
@@ -119,6 +118,8 @@ public class GameMgr : MonoBehaviour
         Debug.Log("New Planet: " + x + ", " + y);
 
         planets.Enqueue(newPlanet);
+
+        return newPlanet;
     }
 
     // Randomly select a prefad

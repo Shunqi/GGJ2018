@@ -6,6 +6,8 @@ public class Planet : MonoBehaviour {
 
     private GameMgr gameMgr;
 
+    public Sprite[] sprites;
+
     // Use this for initialization
     void Start () {
         gameMgr = GameObject.FindObjectOfType<GameMgr>();
@@ -15,6 +17,12 @@ public class Planet : MonoBehaviour {
     {
         transform.localScale = new Vector3(0.2f, 0.2f,0);
         transform.position = pos;
+    }
+
+    public void RandomizeSprite()
+    {
+        int index = (int)(Random.Range(0, 11));
+        GetComponent<SpriteRenderer>().sprite = sprites[index];
     }
 
     private void CheckKeys()
