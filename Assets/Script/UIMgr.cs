@@ -18,6 +18,7 @@ public class UIMgr : MonoBehaviour
 	public Button gameplayPauseButton;
 	public Button gameplayCreditButton;
 	public TextMesh gameplayScoreText;
+	public Text gameplaySpaceText;
 
 	// pauseMenu UIs
 	public GameObject pauseUIs;
@@ -103,9 +104,11 @@ public class UIMgr : MonoBehaviour
 		titleUIs.SetActive(false);
 		gameplayUIs.SetActive(true);
 		gameplayScoreText.gameObject.SetActive(true);
+		gameplaySpaceText.gameObject.SetActive(true);
 		pauseUIs.SetActive(false);
 		endGameUIs.SetActive(false);
 		creditUIs.SetActive(false);
+		Invoke("HideTutorialMessage", 5);
 	}
 
 	// this function is intended to display the pauseMenu layouts
@@ -184,5 +187,11 @@ public class UIMgr : MonoBehaviour
 		pauseUIs.SetActive(false);
 		endGameUIs.SetActive(false);
 		creditUIs.SetActive(true);
+	}
+
+	// hide the space text
+	public void HideTutorialMessage()
+	{
+		gameplaySpaceText.gameObject.SetActive(false);
 	}
 }
