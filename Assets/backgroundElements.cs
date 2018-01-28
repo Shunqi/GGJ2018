@@ -7,9 +7,12 @@ public class backgroundElements : MonoBehaviour {
 	public Sprite[] sprites;
 	public float angularSpeed;
 
+	private Vector3 originalPosition;
+
 	// Use this for initialization
 	void Start () {
 
+		originalPosition = transform.position;
 		int index = (int)(Random.Range(0, sprites.Length));
 		GetComponent<SpriteRenderer>().sprite = sprites[index];
 		angularSpeed = Random.Range(-40, 40);
@@ -38,5 +41,11 @@ public class backgroundElements : MonoBehaviour {
 			GetComponent<SpriteRenderer>().sprite = sprites[index];
 			angularSpeed = Random.Range(-40, 40);
 		}
+	}
+
+	// Revert the original position
+	public void ResetPosition()
+	{
+		transform.position = originalPosition;
 	}
 }

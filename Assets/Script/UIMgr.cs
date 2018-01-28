@@ -126,11 +126,14 @@ public class UIMgr : MonoBehaviour
         gameMgr.RestartGame();
         endingUI.UnShowEnding();
         InitGame();
-        
-
+       
         Vector3 InitialPosition = new Vector3(0, 1f, -10f);
         Camera.main.transform.position = InitialPosition;
 
+		backgroundElements[] be = GameObject.FindObjectsOfType<backgroundElements>();
+		for (int i = 0; i < be.Length; i++)
+			be[i].ResetPosition();
+		GameObject.FindObjectOfType<Scroller>().ResetPosition();
     }
 
     // this function is intended to display the endGame layouts
