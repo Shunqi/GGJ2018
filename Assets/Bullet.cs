@@ -73,7 +73,15 @@ public class Bullet : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
-		if (!fired)
+        var cam = Camera.main;
+        var bottomleft = cam.ViewportToWorldPoint(Vector3.zero);
+        var topright = cam.ViewportToWorldPoint(new Vector3(1f, 1f, 0f));
+
+        bounds.x = bottomleft.x;
+        bounds.y = bottomleft.y;
+        bounds.z = topright.x;
+        bounds.w = topright.y;
+        if (!fired)
 		{
             center = motherPlanet.position;
 			Circular();
@@ -84,11 +92,11 @@ public class Bullet : MonoBehaviour {
 		}
 		var pos = transform.position;
 
-        if (pos.x < bounds.x || pos.x > bounds.z || pos.y < bounds.y || pos.y > bounds.w)
+        if ((pos.x < bounds.x || pos.x > bounds.z || pos.y < bounds.y || pos.y > bounds.w) && gameMgr.GetStatus() == 1)
         {
             //GameOver
             Debug.Log("GG");
-            // gameMgr.GameOver();
+            gameMgr.GameOver();
         }
     }
 }

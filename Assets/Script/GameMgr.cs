@@ -87,6 +87,11 @@ public class GameMgr : MonoBehaviour
         status = RUNNING;
     }
 
+    public void DelayStartGame()
+    {
+        Invoke("StartGame", 1f);
+    }
+
     public void RestartGame()
     {
         status = RUNNING;
@@ -189,7 +194,6 @@ public class GameMgr : MonoBehaviour
 
     public void GameOver()
     {
-        Debug.Log("here");
         uiController.EndOfGame();
     }
 

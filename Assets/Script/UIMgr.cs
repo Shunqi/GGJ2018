@@ -117,7 +117,7 @@ public class UIMgr : MonoBehaviour
 	public void Resume()
 	{
 		pauseUIs.SetActive(false);
-		// GameMgr.ChangeState();
+	    gameMgr.StartGame();
 	}
     public void Restart()
     {
@@ -165,7 +165,7 @@ public class UIMgr : MonoBehaviour
 		animationType = 1;
 		startTime = Time.time;
 		HideUI();
-        gameMgr.StartGame();
+        gameMgr.DelayStartGame();
 	}
 
 	// this function is intended to show credits
