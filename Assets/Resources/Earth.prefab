@@ -80,6 +80,17 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3c37a051163064a409832b0ead107b09, type: 3}
   - {fileID: 21300000, guid: 2f6897f97cab3244e90aa696cdbf181c, type: 3}
   - {fileID: 21300000, guid: 9aa32a7c935e6ca4dbac9f069118bddd, type: 3}
+  - {fileID: 21300000, guid: 09fab7ccdc0494ddd967c1073bf70a7e, type: 3}
+  - {fileID: 21300000, guid: 48306522c55514f9d8e968cd365acbf6, type: 3}
+  - {fileID: 21300000, guid: 43ef091f8ce0c4ad7bb637ff9a9e825e, type: 3}
+  - {fileID: 21300000, guid: 365367cc29bba4351911a33db323505c, type: 3}
+  - {fileID: 21300000, guid: 5e3493c2f94794344bd597db54b8a830, type: 3}
+  - {fileID: 21300000, guid: 718d66cfa06f64b9ca6eeff8e8826d88, type: 3}
+  - {fileID: 21300000, guid: a5c72121cecb6449ebca3ad565b948d5, type: 3}
+  - {fileID: 21300000, guid: c1ea0b9ca8f3a4bc1b075698d4a57e58, type: 3}
+  - {fileID: 21300000, guid: 027cab148171f4ca9b260674c7b4e31c, type: 3}
+  - {fileID: 21300000, guid: db885b35a25f1485db84f3d3658991c1, type: 3}
+  - {fileID: 21300000, guid: 3febc825c8aa049d98c6a95b881f0ebf, type: 3}
 --- !u!212 &212937618629266166
 SpriteRenderer:
   m_ObjectHideFlags: 1
