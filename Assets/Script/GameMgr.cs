@@ -11,6 +11,7 @@ public class GameMgr : MonoBehaviour
     private int score;
     // private GameObject[] planets;
     private Queue<GameObject> planets;
+    private Queue<GameObject> planetsToRemove;
     private GameObject planetPrefab;
     private GameObject rocketPrefab;
     private float currentY;
@@ -39,6 +40,9 @@ public class GameMgr : MonoBehaviour
 
         uiController = UIManagerObject.GetComponent<UIMgr>();
 
+        planets = new Queue<GameObject>();
+        planetsToRemove = new Queue<GameObject>();
+
         // Initiate UI panel
         uiController.InitMenu();
 
@@ -56,7 +60,6 @@ public class GameMgr : MonoBehaviour
 
         uiController.UpdateScores(score);
 
-        planets = new Queue<GameObject>();
 
         // First two planets, hard-coded
         SpawnPlanet(0, -1.5f);
@@ -106,7 +109,12 @@ public class GameMgr : MonoBehaviour
         {
             Destroy(planets.Dequeue());
         }
-        
+
+        while (planetsToRemove.Count > 0)
+        {
+            Destroy(planetsToRemove.Dequeue());
+        }
+
 
         InitGame();
     }
@@ -138,17 +146,22 @@ public class GameMgr : MonoBehaviour
         score += newScore;
         uiController.UpdateScores(score);
 
-
         GameObject planetToRemove = planets.Dequeue();
         float diff = planets.Peek().transform.position.y - planetToRemove.transform.position.y;
         uiController.ShiftCamera(diff);
-
 
         float x = GenerateRandomX();
         float y = GenerateRandomY();
 
         SpawnPlanet(x, y).GetComponent<Planet>().RandomizeSprite();
-        Destroy(planetToRemove);
+
+        // Destroy(planetToRemove);
+
+        planetsToRemove.Enqueue(planetToRemove);
+        if (planetsToRemove.Count > 2)
+        {
+            Destroy(planetsToRemove.Dequeue());
+        }
     }
 
     // Create new planet

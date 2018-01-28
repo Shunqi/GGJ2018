@@ -22,7 +22,7 @@ public class Planet : MonoBehaviour
 
     public void RandomizeSprite()
     {
-        int index = (int)(Random.Range(0, 11));
+        int index = (int)(Random.Range(1, 11));
         GetComponent<SpriteRenderer>().sprite = sprites[index];
     }
 
