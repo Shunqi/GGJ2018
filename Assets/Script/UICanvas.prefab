@@ -427,7 +427,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114309714872903844}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114436764507271290}
+        m_MethodName: Resume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114186249085431868
@@ -736,7 +747,7 @@ MonoBehaviour:
   gameplayScoreText: {fileID: 0}
   pauseUIs: {fileID: 1669433233332728}
   pauseResumeButton: {fileID: 114057247182519444}
-  pauseRestartButton: {fileID: 114601475527115518}
+  pauseRestartButton: {fileID: 114995563865716206}
   endGameUIs: {fileID: 1664794431445060}
   endGameRetryButton: {fileID: 114994107816043142}
   creditUIs: {fileID: 1823063226173382}
@@ -871,7 +882,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114855104290338926}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114436764507271290}
+        m_MethodName: Restart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114613895119612100

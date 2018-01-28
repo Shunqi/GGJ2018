@@ -7,7 +7,7 @@ public class GameMgr : MonoBehaviour
     public GameMgr instance = null;
 
     private UIMgr uiController;
-    private bool isPause;
+    private int status;
     private int score;
     // private GameObject[] planets;
     private Queue<GameObject> planets;
@@ -16,12 +16,9 @@ public class GameMgr : MonoBehaviour
     private float currentY;
     private GameObject rocket;
 
-    // private static GameMgr _instance;
-
-    // public static GameMgr Instance
-    // {
-    //    get { return _instance; }
-    // }
+    public static int PAUSE = 0;
+    public static int RUNNING = 1;
+    public static int MENU = 2;
 
     // Initialization
     void Awake()
@@ -37,29 +34,30 @@ public class GameMgr : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
         score = 0;
-        isPause = true;
+        status = MENU;
         
         GameObject UIManagerObject = GameObject.Find("UICanvas");
 
         uiController = UIManagerObject.GetComponent<UIMgr>();
+
+        // Initiate UI panel
+        uiController.InitMenu();
 
         InitGame();
     }
 
     public void InitGame()
     {
-        // Initiate UI panel
-        uiController.InitMenu();
-
+        
         planetPrefab = Resources.Load("Earth") as GameObject;
         rocketPrefab = Resources.Load("Rocket") as GameObject;
 
         planets = new Queue<GameObject>();
 
         // First two planets, hard-coded
-        SpawnPlanet(0, -1.9f);
-        SpawnPlanet(0, 4.29f).GetComponent<Planet>().RandomizeSprite();
-        currentY = 4.29f;
+        SpawnPlanet(0, -1.5f);
+        SpawnPlanet(0, 4.65f).GetComponent<Planet>().RandomizeSprite();
+        currentY = 4.5f;
 
         GenerateRocket();
 
@@ -75,18 +73,18 @@ public class GameMgr : MonoBehaviour
     public void StopGame()
     {
         // Change state to Pause
-        isPause = true;
+        status = PAUSE;
     }
 
     public void StartGame()
     {
         // Change satate to Start
-        isPause = false;
+        status = RUNNING;
     }
 
     public void RestartGame()
     {
-        isPause = true;
+        status = RUNNING;
         // Destroy all existing planets
         while (planets.Count > 0)
         {
@@ -114,10 +112,9 @@ public class GameMgr : MonoBehaviour
     }
 
     // For GamePlay to disable space click
-    public bool IsPause()
+    public int GetStatus()
     {
-        // StartGame();
-        return isPause;
+        return status;
     }
 
     /*

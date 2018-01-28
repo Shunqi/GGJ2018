@@ -28,9 +28,8 @@ public class Planet : MonoBehaviour
 
     private void CheckKeys()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && gameMgr.GetStatus() == 1)
         {
-            Debug.Log(!gameMgr.IsPause());
             Fire();
         }
     }
@@ -52,6 +51,7 @@ public class Planet : MonoBehaviour
 
     // Update is called once per frame
     void Update () {
+        Debug.Log("updating in planet");
         CheckKeys();
 	}
 

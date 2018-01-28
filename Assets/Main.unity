@@ -113,40 +113,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &22595643 stripped
+--- !u!114 &242877379 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114057247182519444, guid: 9f8f70f70c57ed2418f90386b29c5ebb,
     type: 2}
   m_PrefabInternal: {fileID: 887710080}
   m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
---- !u!114 &74235868 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114358602545270132, guid: 9f8f70f70c57ed2418f90386b29c5ebb,
-    type: 2}
-  m_PrefabInternal: {fileID: 887710080}
-  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
---- !u!1 &106363468 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1854587101799352, guid: 9f8f70f70c57ed2418f90386b29c5ebb,
-    type: 2}
-  m_PrefabInternal: {fileID: 887710080}
---- !u!114 &160527651 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114995563865716206, guid: 9f8f70f70c57ed2418f90386b29c5ebb,
-    type: 2}
-  m_PrefabInternal: {fileID: 887710080}
-  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
---- !u!114 &160527652 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114994107816043142, guid: 9f8f70f70c57ed2418f90386b29c5ebb,
-    type: 2}
-  m_PrefabInternal: {fileID: 887710080}
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
---- !u!1 &239078373 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1823063226173382, guid: 9f8f70f70c57ed2418f90386b29c5ebb,
-    type: 2}
-  m_PrefabInternal: {fileID: 887710080}
 --- !u!1 &320588033
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,6 +184,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &464741660 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114994107816043142, guid: 9f8f70f70c57ed2418f90386b29c5ebb,
+    type: 2}
+  m_PrefabInternal: {fileID: 887710080}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!102 &484056726 stripped
 TextMesh:
   m_PrefabParentObject: {fileID: 102471803595772830, guid: 7027236c59782c04088ec445c737e54e,
@@ -286,12 +264,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b5b8ebab503584923b4ecd90b9f154e2, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &838808658 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114344208879751476, guid: 9f8f70f70c57ed2418f90386b29c5ebb,
-    type: 2}
-  m_PrefabInternal: {fileID: 887710080}
-  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &843612611
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,51 +446,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114436764507271290, guid: 9f8f70f70c57ed2418f90386b29c5ebb,
         type: 2}
-      propertyPath: titleUIs
-      value: 
-      objectReference: {fileID: 2099903621}
-    - target: {fileID: 114436764507271290, guid: 9f8f70f70c57ed2418f90386b29c5ebb,
-        type: 2}
-      propertyPath: titleImage
-      value: 
-      objectReference: {fileID: 1276963794}
-    - target: {fileID: 114436764507271290, guid: 9f8f70f70c57ed2418f90386b29c5ebb,
-        type: 2}
-      propertyPath: titleStartButton
-      value: 
-      objectReference: {fileID: 838808658}
-    - target: {fileID: 114436764507271290, guid: 9f8f70f70c57ed2418f90386b29c5ebb,
-        type: 2}
-      propertyPath: creditUIs
-      value: 
-      objectReference: {fileID: 239078373}
-    - target: {fileID: 114436764507271290, guid: 9f8f70f70c57ed2418f90386b29c5ebb,
-        type: 2}
-      propertyPath: pauseUIs
-      value: 
-      objectReference: {fileID: 1236214037}
-    - target: {fileID: 114436764507271290, guid: 9f8f70f70c57ed2418f90386b29c5ebb,
-        type: 2}
-      propertyPath: gameplayPauseButton
-      value: 
-      objectReference: {fileID: 1906411514}
-    - target: {fileID: 114436764507271290, guid: 9f8f70f70c57ed2418f90386b29c5ebb,
-        type: 2}
-      propertyPath: pauseRestartButton
-      value: 
-      objectReference: {fileID: 160527651}
-    - target: {fileID: 114436764507271290, guid: 9f8f70f70c57ed2418f90386b29c5ebb,
-        type: 2}
-      propertyPath: gameplayUIs
-      value: 
-      objectReference: {fileID: 106363468}
-    - target: {fileID: 114436764507271290, guid: 9f8f70f70c57ed2418f90386b29c5ebb,
-        type: 2}
-      propertyPath: gameplayCreditButton
-      value: 
-      objectReference: {fileID: 74235868}
-    - target: {fileID: 114436764507271290, guid: 9f8f70f70c57ed2418f90386b29c5ebb,
-        type: 2}
       propertyPath: gameplayScoreText
       value: 
       objectReference: {fileID: 484056726}
@@ -526,17 +453,17 @@ Prefab:
         type: 2}
       propertyPath: pauseResumeButton
       value: 
-      objectReference: {fileID: 22595643}
+      objectReference: {fileID: 242877379}
     - target: {fileID: 114436764507271290, guid: 9f8f70f70c57ed2418f90386b29c5ebb,
         type: 2}
       propertyPath: endGameUIs
       value: 
-      objectReference: {fileID: 1313832234}
+      objectReference: {fileID: 1609211246}
     - target: {fileID: 114436764507271290, guid: 9f8f70f70c57ed2418f90386b29c5ebb,
         type: 2}
       propertyPath: endGameRetryButton
       value: 
-      objectReference: {fileID: 160527652}
+      objectReference: {fileID: 464741660}
     - target: {fileID: 1664794431445060, guid: 9f8f70f70c57ed2418f90386b29c5ebb, type: 2}
       propertyPath: m_IsActive
       value: 0
@@ -628,6 +555,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 102471803595772830, guid: 7027236c59782c04088ec445c737e54e,
+        type: 2}
+      propertyPath: m_Text
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7027236c59782c04088ec445c737e54e, type: 2}
   m_IsPrefabParent: 0
@@ -670,25 +602,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114810176432059746, guid: bbb797f3be7cd6b41949ff09be13e019,
+        type: 2}
+      propertyPath: rocket
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bbb797f3be7cd6b41949ff09be13e019, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1236214037 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1669433233332728, guid: 9f8f70f70c57ed2418f90386b29c5ebb,
-    type: 2}
-  m_PrefabInternal: {fileID: 887710080}
---- !u!114 &1276963794 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114186249085431868, guid: 9f8f70f70c57ed2418f90386b29c5ebb,
-    type: 2}
-  m_PrefabInternal: {fileID: 887710080}
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
---- !u!1 &1313832234 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1664794431445060, guid: 9f8f70f70c57ed2418f90386b29c5ebb,
-    type: 2}
-  m_PrefabInternal: {fileID: 887710080}
 --- !u!1001 &1542041484
 Prefab:
   m_ObjectHideFlags: 0
@@ -736,6 +657,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b20099d075fc71449aac1e55bf65fb50, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1609211246 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1664794431445060, guid: 9f8f70f70c57ed2418f90386b29c5ebb,
+    type: 2}
+  m_PrefabInternal: {fileID: 887710080}
 --- !u!1 &1848606266
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,12 +724,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1906411514 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114390420566834116, guid: 9f8f70f70c57ed2418f90386b29c5ebb,
-    type: 2}
-  m_PrefabInternal: {fileID: 887710080}
-  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &2091172321
 Prefab:
   m_ObjectHideFlags: 0
@@ -846,8 +766,3 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a7539ea8b68a53c4c8640302c73a374a, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &2099903621 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1143473085597288, guid: 9f8f70f70c57ed2418f90386b29c5ebb,
-    type: 2}
-  m_PrefabInternal: {fileID: 887710080}
