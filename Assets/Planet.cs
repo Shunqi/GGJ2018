@@ -28,7 +28,7 @@ public class Planet : MonoBehaviour
 
     private void CheckKeys()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && gameMgr.GetStatus() == 1)
+        if (Input.GetKeyDown(KeyCode.Space) && gameMgr.GetStatus() == 1 && FindObjectOfType<Bullet>().GetComponent<Bullet>().fired == false)
         {
             Fire();
         }
@@ -36,7 +36,13 @@ public class Planet : MonoBehaviour
 
     private void Fire()
     {
+        if (!FindObjectOfType<Bullet>().GetComponent<Bullet>().clockWiseRotation)
+        {
+            FindObjectOfType<Bullet>().GetComponent<Bullet>().clockWiseRotation = true;
+        }
+        else FindObjectOfType<Bullet>().GetComponent<Bullet>().clockWiseRotation = false;
         FindObjectOfType<Bullet>().GetComponent<Bullet>().fired = true;
+        FindObjectOfType<Bullet>().GetComponent<Bullet>().RotateSpeed += 0.05f;
     }
     private void OnTriggerEnter2D(Collider2D collider)
     {

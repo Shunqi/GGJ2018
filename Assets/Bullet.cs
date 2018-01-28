@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour {
-    private float RotateSpeed = 2f;
+    public float RotateSpeed = 2f;
     private float ForwardSpeed = 6f;
     private float Radius;
     public float angle;
@@ -13,7 +13,6 @@ public class Bullet : MonoBehaviour {
     public bool clockWiseRotation;
     private static Vector4 bounds;
     public Transform motherPlanet;
-
     private GameMgr gameMgr;
 
     // Use this for initialization
@@ -33,11 +32,19 @@ public class Bullet : MonoBehaviour {
         Radius = 8f * motherPlanet.localScale.x;
         fired = false;
         angle = 0;
+        clockWiseRotation = true;
     }
-
+    public void ChangeRotateDirection()
+    {
+        if (clockWiseRotation)
+            clockWiseRotation = false;
+        else clockWiseRotation = true;
+    }
 	private void Circular()
     {
-        angle += RotateSpeed * Time.deltaTime;
+        if(clockWiseRotation)
+            angle += RotateSpeed * Time.deltaTime;
+        else angle -= RotateSpeed * Time.deltaTime;
         // Debug.Log(angle / 2 / Mathf.PI - 0.25);
         // Debug.Log("Radius: " + Radius);
         // Debug.Log("Angle : " + angle);
@@ -53,7 +60,10 @@ public class Bullet : MonoBehaviour {
 		var norm = dir;
 		norm.x = -dir.y;
 		norm.y = dir.x;
-		transform.right = norm;
+        if (clockWiseRotation)
+            transform.right = norm;
+        else
+            transform.right = -norm;
 		//transform.rotation = Quaternion.Euler(0, 0, originRotation - dist* 360/(2*Mathf.PI*Radius));
 	}
 	private void Forward()
