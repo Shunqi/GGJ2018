@@ -22,13 +22,13 @@ public class Planet : MonoBehaviour
 
     public void RandomizeSprite()
     {
-        int index = (int)(Random.Range(1, 11));
+		int index = (int)(Random.Range(1, sprites.Length));
         GetComponent<SpriteRenderer>().sprite = sprites[index];
     }
 
     private void CheckKeys()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && gameMgr.GetStatus() == 1)
+        if (Input.GetKeyDown(KeyCode.Space) && gameMgr.GetStatus() == 1 && FindObjectOfType<Bullet>().GetComponent<Bullet>().fired == false)
         {
             Fire();
         }
@@ -36,17 +36,21 @@ public class Planet : MonoBehaviour
 
     private void Fire()
     {
-        FindObjectOfType<Bullet>().GetComponent<Bullet>().fired = true;
+        if (!FindObjectOfType<Bullet>().GetComponent<Bullet>().clockWiseRotation)
+		{
+			FindObjectOfType<Bullet>().GetComponent<Bullet>().clockWiseRotation = true;
+		}
+		else FindObjectOfType<Bullet>().GetComponent<Bullet>().clockWiseRotation = false;
+		FindObjectOfType<Bullet>().GetComponent<Bullet>().fired = true;
+		FindObjectOfType<Bullet>().GetComponent<Bullet>().RotateSpeed += 0.05f;
     }
     private void OnTriggerEnter2D(Collider2D collider)
     {
         //Add score
         //CameraShift
-        Debug.Log("Collide");
         FindObjectOfType<Envelope>().GetComponent<Envelope>().Show();
-
-        collider.GetComponent<Bullet>().motherPlanet = transform;
         collider.GetComponent<Bullet>().fired = false;
+        collider.GetComponent<Bullet>().motherPlanet = transform;
         collider.GetComponent<Bullet>().NewPlanet();
         gameMgr.GetComponent<GameMgr>().AddScore(1);
     }

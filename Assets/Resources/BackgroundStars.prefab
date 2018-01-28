@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212019787175718484}
   - component: {fileID: 114726730406271482}
   m_Layer: 0
-  m_Name: BackgroundElements
+  m_Name: BackgroundStars
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,20 +53,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: 61e3d56d492533d43a44986234ef1213, type: 3}
-  - {fileID: 21300000, guid: 9666c8cf786197145801b07d7fb4a5eb, type: 3}
-  - {fileID: 21300000, guid: 8f6667893d8fa7a4a810ab178029ad9c, type: 3}
-  - {fileID: 21300000, guid: 5e3493c2f94794344bd597db54b8a830, type: 3}
-  - {fileID: 21300000, guid: 61e3d56d492533d43a44986234ef1213, type: 3}
-  - {fileID: 21300000, guid: 9666c8cf786197145801b07d7fb4a5eb, type: 3}
-  - {fileID: 21300000, guid: db885b35a25f1485db84f3d3658991c1, type: 3}
-  - {fileID: 21300000, guid: 66a72565d88ec544ea59805019e4f7ea, type: 3}
-  - {fileID: 21300000, guid: 8ffa15b2880c373449fa40685bf34374, type: 3}
-  - {fileID: 21300000, guid: 3febc825c8aa049d98c6a95b881f0ebf, type: 3}
-  angularSpeed: 0
-  xspeed: 0
-  yspeed: 0
-  canRotate: 1
+  - {fileID: 21300000, guid: 3ba00bc5603a34bdc8caf34b5fdcd00d, type: 3}
+  - {fileID: 21300000, guid: 3ba00bc5603a34bdc8caf34b5fdcd00d, type: 3}
+  - {fileID: 21300000, guid: d3ec2e6a9f6e34b3e97b5792da0e18cf, type: 3}
+  - {fileID: 21300000, guid: d3ec2e6a9f6e34b3e97b5792da0e18cf, type: 3}
+  - {fileID: 21300000, guid: 9f8c69663735043c89393ef126fca08b, type: 3}
+  - {fileID: 21300000, guid: 9fdb0f520efc24045b110da4c956df10, type: 3}
+  - {fileID: 21300000, guid: 91678cf28151549c0a3a2f6af727361e, type: 3}
+  canRotate: 0
 --- !u!212 &212019787175718484
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -101,8 +95,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9666c8cf786197145801b07d7fb4a5eb, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.291}
+  m_Sprite: {fileID: 21300000, guid: 3ba00bc5603a34bdc8caf34b5fdcd00d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.703}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
