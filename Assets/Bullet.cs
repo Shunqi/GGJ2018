@@ -15,13 +15,15 @@ public class Bullet : MonoBehaviour
 	private static Vector4 bounds;
 	public Transform motherPlanet;
 	private GameMgr gameMgr;
+    public float entranceAngle;
+    public bool bonus;
 
 	// Use this for initialization
 	void Start()
 	{
 		gameMgr = GameObject.FindObjectOfType<GameMgr>();
-
-		var cam = Camera.main;
+        GetComponent<TrailRenderer>().enabled = false;
+        var cam = Camera.main;
 		var bottomleft = cam.ViewportToWorldPoint(Vector3.zero);
 		var topright = cam.ViewportToWorldPoint(new Vector3(1f, 1f, 0f));
 
@@ -34,7 +36,9 @@ public class Bullet : MonoBehaviour
 		Radius = 8f * motherPlanet.localScale.x;
 		fired = false;
 		angle = 0;
+        entranceAngle = 0;
 		clockWiseRotation = true;
+        bonus = false;
 	}
 	public void ChangeRotateDirection()
 	{
@@ -79,6 +83,7 @@ public class Bullet : MonoBehaviour
 		//if (((Vector3)center - transform.position).y < 0)
 		//{
 		angle = Mathf.Asin(((Vector3)center - transform.position).x / Radius);
+        entranceAngle = angle;
 		//}
 		//else angle = Mathf.PI - Mathf.Asin(((Vector3)center - transform.position).x / Radius);
 	}
@@ -110,5 +115,11 @@ public class Bullet : MonoBehaviour
 			Debug.Log("GG");
 			gameMgr.GameOver();
 		}
-	}
+        if (bonus)
+        {
+            GetComponent<TrailRenderer>().enabled = true;
+        }
+        else GetComponent<TrailRenderer>().enabled = false;
+
+    }
 }

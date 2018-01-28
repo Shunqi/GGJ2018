@@ -41,8 +41,21 @@ public class Planet : MonoBehaviour
 			FindObjectOfType<Bullet>().GetComponent<Bullet>().clockWiseRotation = true;
 		}
 		else FindObjectOfType<Bullet>().GetComponent<Bullet>().clockWiseRotation = false;
-		FindObjectOfType<Bullet>().GetComponent<Bullet>().fired = true;
+        if (FindObjectOfType<Bullet>().GetComponent<Bullet>().clockWiseRotation
+            && FindObjectOfType<Bullet>().GetComponent<Bullet>().entranceAngle < (FindObjectOfType<Bullet>().GetComponent<Bullet>().angle + 2 * Mathf.PI))
+        {
+            FindObjectOfType<Bullet>().GetComponent<Bullet>().bonus = true;
+
+        }
+        else if (!FindObjectOfType<Bullet>().GetComponent<Bullet>().clockWiseRotation
+            && FindObjectOfType<Bullet>().GetComponent<Bullet>().entranceAngle > (FindObjectOfType<Bullet>().GetComponent<Bullet>().angle - 2 * Mathf.PI))
+        {
+            FindObjectOfType<Bullet>().GetComponent<Bullet>().bonus = true;
+        }
+        else FindObjectOfType<Bullet>().GetComponent<Bullet>().bonus = false;
+        FindObjectOfType<Bullet>().GetComponent<Bullet>().fired = true;
 		FindObjectOfType<Bullet>().GetComponent<Bullet>().RotateSpeed += 0.05f;
+        
     }
     private void OnTriggerEnter2D(Collider2D collider)
     {
@@ -52,7 +65,11 @@ public class Planet : MonoBehaviour
         collider.GetComponent<Bullet>().fired = false;
         collider.GetComponent<Bullet>().motherPlanet = transform;
         collider.GetComponent<Bullet>().NewPlanet();
-        gameMgr.GetComponent<GameMgr>().AddScore(1);
+        if (FindObjectOfType<Bullet>().bonus)
+        {
+            gameMgr.GetComponent<GameMgr>().AddScore(2);
+        }
+        else gameMgr.GetComponent<GameMgr>().AddScore(1);
     }
 
     // Update is called once per frame
