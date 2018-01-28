@@ -33,7 +33,6 @@ public class GameMgr : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
-        score = 0;
         status = MENU;
         
         GameObject UIManagerObject = GameObject.Find("UICanvas");
@@ -43,14 +42,19 @@ public class GameMgr : MonoBehaviour
         // Initiate UI panel
         uiController.InitMenu();
 
+        planetPrefab = Resources.Load("Earth") as GameObject;
+        rocketPrefab = Resources.Load("Rocket") as GameObject;
+        GameObject newRocket = Instantiate(rocketPrefab);
+        newRocket.GetComponent<Bullet>();
+        rocket = newRocket;
         InitGame();
     }
 
     public void InitGame()
     {
-        
-        planetPrefab = Resources.Load("Earth") as GameObject;
-        rocketPrefab = Resources.Load("Rocket") as GameObject;
+        score = 0;
+
+        uiController.UpdateScores(score);
 
         planets = new Queue<GameObject>();
 
@@ -58,7 +62,8 @@ public class GameMgr : MonoBehaviour
         SpawnPlanet(0, -1.5f);
         SpawnPlanet(0, 4.65f).GetComponent<Planet>().RandomizeSprite();
         currentY = 4.5f;
-
+        rocket.GetComponent<Bullet>().motherPlanet = planets.Peek().transform;
+        rocket.GetComponent<Bullet>().fired = false;
         GenerateRocket();
 
     }
@@ -85,24 +90,25 @@ public class GameMgr : MonoBehaviour
     public void RestartGame()
     {
         status = RUNNING;
+
+        rocket.GetComponent<SpriteRenderer>().enabled = false;
+
+        rocket.GetComponent<Bullet>().motherPlanet = rocket.transform;
+        
+
         // Destroy all existing planets
         while (planets.Count > 0)
         {
             Destroy(planets.Dequeue());
         }
-
-        // Destroy rocket
-        // Bullet rocket = GameObject.FindObjectOfType<Bullet>();
-        Destroy(rocket);
+        
 
         InitGame();
     }
 
     public void GenerateRocket()
     {
-        GameObject newRocket = Instantiate(rocketPrefab);
-        newRocket.GetComponent<Bullet>();
-        rocket = newRocket;
+        rocket.GetComponent<SpriteRenderer>().enabled = true;
     }
     
 

@@ -14,38 +14,46 @@ public class Fire : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void Update () {
-        if (FindObjectOfType<Bullet>().fired)
+        if(rocket == null)
         {
-            transform.position = rocket.position + 0.8f * transform.right;
-            transform.rotation = rocket.rotation;
-            if(GetComponent<SpriteRenderer>().enabled == true )
-            {
-                animationLoop++;
-                if(animationLoop >= 5)
-                {
-                    GetComponent<SpriteRenderer>().enabled = false;
-                }
-            }
-            else
-            {
-                
-                animationLoop--;
-                if(animationLoop <= 0)
-                {
-                    GetComponent<SpriteRenderer>().enabled = true;
-
-                }
-
-
-            }
-
+            GetComponent<SpriteRenderer>().enabled = false;
         }
         else
         {
-            transform.position = rocket.position + 0.8f * transform.right;
-            transform.rotation = rocket.rotation;
-            GetComponent<SpriteRenderer>().enabled = false;
+            if (FindObjectOfType<Bullet>().fired && rocket != null)
+            {
+                transform.position = rocket.position + 0.8f * transform.right;
+                transform.rotation = rocket.rotation;
+                if (GetComponent<SpriteRenderer>().enabled == true)
+                {
+                    animationLoop++;
+                    if (animationLoop >= 5)
+                    {
+                        GetComponent<SpriteRenderer>().enabled = false;
+                    }
+                }
+                else
+                {
+
+                    animationLoop--;
+                    if (animationLoop <= 0)
+                    {
+                        GetComponent<SpriteRenderer>().enabled = true;
+
+                    }
+
+
+                }
+
+            }
+            else
+            {
+                transform.position = rocket.position + 0.8f * transform.right;
+                transform.rotation = rocket.rotation;
+                GetComponent<SpriteRenderer>().enabled = false;
+            }
+
         }
-        
+
     }
 }

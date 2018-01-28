@@ -75,6 +75,7 @@ public class Bullet : MonoBehaviour {
 	{
 		if (!fired)
 		{
+            center = motherPlanet.position;
 			Circular();
 		}
 		if (fired)

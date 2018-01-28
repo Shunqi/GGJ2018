@@ -42,9 +42,11 @@ public class Planet : MonoBehaviour
     {
         //Add score
         //CameraShift
+        Debug.Log("Collide");
         FindObjectOfType<Envelope>().GetComponent<Envelope>().Show();
-        collider.GetComponent<Bullet>().fired = false;
+
         collider.GetComponent<Bullet>().motherPlanet = transform;
+        collider.GetComponent<Bullet>().fired = false;
         collider.GetComponent<Bullet>().NewPlanet();
         gameMgr.GetComponent<GameMgr>().AddScore(1);
     }

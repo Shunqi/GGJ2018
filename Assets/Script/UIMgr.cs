@@ -122,7 +122,12 @@ public class UIMgr : MonoBehaviour
     public void Restart()
     {
         gameMgr.RestartGame();
+        
         InitGame();
+
+        Vector3 InitialPosition = new Vector3(0, 1f, -10f);
+        Camera.main.transform.position = InitialPosition;
+
     }
 
     // this function is intended to display the endGame layouts
