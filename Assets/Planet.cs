@@ -22,15 +22,14 @@ public class Planet : MonoBehaviour
 
     public void RandomizeSprite()
     {
-		int index = (int)(Random.Range(0, sprites.Length));
+        int index = (int)(Random.Range(1, 11));
         GetComponent<SpriteRenderer>().sprite = sprites[index];
     }
 
     private void CheckKeys()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && gameMgr.GetStatus() == 1)
         {
-            Debug.Log(!gameMgr.IsPause());
             Fire();
         }
     }
@@ -43,9 +42,11 @@ public class Planet : MonoBehaviour
     {
         //Add score
         //CameraShift
+        Debug.Log("Collide");
         FindObjectOfType<Envelope>().GetComponent<Envelope>().Show();
-        collider.GetComponent<Bullet>().fired = false;
+
         collider.GetComponent<Bullet>().motherPlanet = transform;
+        collider.GetComponent<Bullet>().fired = false;
         collider.GetComponent<Bullet>().NewPlanet();
         gameMgr.GetComponent<GameMgr>().AddScore(1);
     }

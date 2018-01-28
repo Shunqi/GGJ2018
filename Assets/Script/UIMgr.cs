@@ -117,11 +117,17 @@ public class UIMgr : MonoBehaviour
 	public void Resume()
 	{
 		pauseUIs.SetActive(false);
-		// GameMgr.ChangeState();
+	    gameMgr.StartGame();
 	}
     public void Restart()
     {
+        gameMgr.RestartGame();
+        
         InitGame();
+
+        Vector3 InitialPosition = new Vector3(0, 1f, -10f);
+        Camera.main.transform.position = InitialPosition;
+
     }
 
     // this function is intended to display the endGame layouts
@@ -159,7 +165,7 @@ public class UIMgr : MonoBehaviour
 		animationType = 1;
 		startTime = Time.time;
 		HideUI();
-        gameMgr.StartGame();
+        gameMgr.DelayStartGame();
 	}
 
 	// this function is intended to show credits
