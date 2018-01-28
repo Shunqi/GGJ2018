@@ -57,9 +57,9 @@ public class GameMgr : MonoBehaviour
         planets = new Queue<GameObject>();
 
         // First two planets, hard-coded
-        SpawnPlanet(0, -1.9f);
-        SpawnPlanet(0, 4.29f).GetComponent<Planet>().RandomizeSprite();
-        currentY = 4.29f;
+        SpawnPlanet(0, -1.5f);
+        SpawnPlanet(0, 4.65f).GetComponent<Planet>().RandomizeSprite();
+        currentY = 4.5f;
 
         GenerateRocket();
 
