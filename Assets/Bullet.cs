@@ -34,6 +34,7 @@ public class Bullet : MonoBehaviour {
         fired = false;
         angle = 0;
     }
+
 	private void Circular()
     {
         angle += RotateSpeed * Time.deltaTime;

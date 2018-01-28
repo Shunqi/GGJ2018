@@ -109,13 +109,16 @@ public class UIMgr : MonoBehaviour
 	public void Pause()
 	{
 		pauseUIs.SetActive(true);
-		// GameMgr.ChangeState();
-	}
+        GameMgr gameManager = GameObject.Find("GameManager").GetComponent<GameMgr>();
+        gameManager.StopGame();
+
+    }
 	public void Resume()
 	{
 		pauseUIs.SetActive(false);
-		// GameMgr.ChangeState();
-	}
+        GameMgr gameManager = GameObject.Find("GameManager").GetComponent<GameMgr>();
+        gameManager.StartGame();
+    }
 
 	// this function is intended to display the endGame layouts
 	public void EndOfGame()

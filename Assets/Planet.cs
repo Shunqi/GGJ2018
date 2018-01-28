@@ -28,8 +28,9 @@ public class Planet : MonoBehaviour
 
     private void CheckKeys()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !gameMgr.IsPause())
+        if (Input.GetKeyDown(KeyCode.Space))
         {
+            Debug.Log(!gameMgr.IsPause());
             Fire();
         }
     }

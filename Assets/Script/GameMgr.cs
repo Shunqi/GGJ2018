@@ -14,6 +14,14 @@ public class GameMgr : MonoBehaviour
     private GameObject planetPrefab;
     private GameObject rocketPrefab;
     private float currentY;
+    private GameObject rocket;
+
+    // private static GameMgr _instance;
+
+    // public static GameMgr Instance
+    // {
+    //    get { return _instance; }
+    // }
 
     // Initialization
     void Awake()
@@ -53,6 +61,8 @@ public class GameMgr : MonoBehaviour
         SpawnPlanet(0, 4.29f).GetComponent<Planet>().RandomizeSprite();
         currentY = 4.29f;
 
+        GenerateRocket();
+
     }
 
     // For rocket to get to the correct planet
@@ -73,6 +83,29 @@ public class GameMgr : MonoBehaviour
         // Change satate to Start
         isPause = false;
     }
+
+    public void RestartGame()
+    {
+        isPause = true;
+        // Destroy all existing planets
+        while (planets.Count > 0)
+        {
+            Destroy(planets.Dequeue());
+        }
+
+        // Destroy rocket
+        // Bullet rocket = GameObject.FindObjectOfType<Bullet>();
+        Destroy(rocket);
+
+        InitGame();
+    }
+
+    public void GenerateRocket()
+    {
+        GameObject newRocket = Instantiate(rocketPrefab);
+        newRocket.GetComponent<Bullet>();
+        rocket = newRocket;
+    }
     
 
     public int GetScore()
@@ -83,6 +116,7 @@ public class GameMgr : MonoBehaviour
     // For GamePlay to disable space click
     public bool IsPause()
     {
+        // StartGame();
         return isPause;
     }
 
@@ -120,13 +154,6 @@ public class GameMgr : MonoBehaviour
         planets.Enqueue(newPlanet);
 
         return newPlanet;
-    }
-
-    // Randomly select a prefad
-    public GameObject GenerateRandomPlanet()
-    {
-        GameObject instance = Resources.Load("earth") as GameObject;
-        return instance;
     }
 
     public float GenerateRandomX()
