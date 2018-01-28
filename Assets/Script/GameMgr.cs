@@ -67,6 +67,7 @@ public class GameMgr : MonoBehaviour
         currentY = 4.5f;
         rocket.GetComponent<Bullet>().motherPlanet = planets.Peek().transform;
         rocket.GetComponent<Bullet>().fired = false;
+        rocket.GetComponent<Bullet>().RotateSpeed = 2f;
         GenerateRocket();
 
     }
