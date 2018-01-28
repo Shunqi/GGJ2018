@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIMgr : MonoBehaviour
 {
     GameMgr gameMgr;
+    EndingUI endingUI;
 
 	// title UIs
 	public GameObject titleUIs;
@@ -43,6 +44,7 @@ public class UIMgr : MonoBehaviour
 	void Start()
 	{
         gameMgr = FindObjectOfType<GameMgr>().instance;
+        endingUI = GameObject.Find("EndingUI").GetComponent<EndingUI>();
 	}
 
 	// Update is called once per frame
@@ -122,8 +124,9 @@ public class UIMgr : MonoBehaviour
     public void Restart()
     {
         gameMgr.RestartGame();
-        
+        endingUI.UnShowEnding();
         InitGame();
+        
 
         Vector3 InitialPosition = new Vector3(0, 1f, -10f);
         Camera.main.transform.position = InitialPosition;
@@ -139,6 +142,7 @@ public class UIMgr : MonoBehaviour
 		pauseUIs.SetActive(false);
 		endGameUIs.SetActive(true);
 		creditUIs.SetActive(false);
+        endingUI.ShowEnding();
 	}
 
 	// this function is intended to translate the camera to a y posit
